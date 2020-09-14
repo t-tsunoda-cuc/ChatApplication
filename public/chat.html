@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>School Takt</title>
+    </head>
+    <body>
+        <div class="projectheader-teacher">
+            <div class="header-container-title">
+                <div class="projectheader-logo-teacher">授業一覧</div>
+                <div class="projectheader-list-teacher">
+                    <ul>
+                        <li>
+                            <a class="project-link" href="index.html">参加授業</a>
+                        </li>
+                        <li>
+                            <a class="project-link" href="attended-project-none.html">受講生</a>
+                        </li>
+                        <li>
+                            <a class="project-link-select" href="chat.html">チャット</a>
+                        </li>
+                    </ul>  
+                </div>  
+            </div>
+
+            <div class="header-container-menu">
+                <div class="login-user">
+                    <div>ユーザー名：</div>
+                    <div id="login_user" class="login-name"></div>
+                </div>
+                <div class="dropdown">
+                    <img onclick="myFunction()" id="login_icon" class="dropdown-icon" src="" alt="写真">
+                    <div id="myDropdown" class="dropdown-container">
+                        <button class="dropdown-item">プロフィール</button>
+                        <button class="dropdown-item" onclick="location.href='index.html'">ログアウト</button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+
+        <div class="main">
+            <div class="chat-container">
+                <div class="comment-main" id="comment-main">
+                    <!-- <div id="id" class="comment-block">
+                        <div class="comment-user">
+                            <img class="user-icon" src="image/good-icon.png" alt="写真">
+                            <div class="user-name">Jonas</div>
+                            <div class="comment-time">12:00</div>
+                            <button onclick="chatDelete(event)" class="chatDelete" id="chatDelete" value="">×</button>
+                        </div>
+                        <div class="comment-box">
+                            <div class="comment">test</div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="date-container">
+                        <hr class="date-line"></hr>
+                        <div class="date-box">
+                            <div class="date">08月13日(木)</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="comment-sender">
+                    <textarea id="input-message" class="comment-input" type="text"
+                        placeholder="コメントする"
+                        rows="1"
+                        oninput="textAreaHeightSet()"
+                        onchange="textAreaHeightSet()"></textarea>
+                    <button id="send" class="send" >Send</button>
+                </div> 
+            </div>
+            <div class="users-container">
+                <div class="all-member">
+                    <div class="user-all">
+                        <div class="user-name">Member</div>
+                    </div>
+                </div>
+                <div class="teacher-container" id="teacher_container">
+                    <div class="user-category">先生</div>
+                    <!-- <div id="user1" class="user">
+                        <img class="user-icon" src="https://yokoi-ac.com/wp-content/uploads/top_sp_main_visual03.jpg" alt="写真">
+                        <div id="user_name1" class="user-name">Jonas</div>
+                    </div> -->
+                </div>
+                <div class="student-container">
+                    <div class="user-category">生徒</div>
+                    <!-- <div id="user2" class="user">
+                        <img class="user-icon" src="https://cdn.pixabay.com/photo/2017/02/07/16/47/kingfisher-2046453__340.jpg" alt="写真">
+                        <div id="user_name2" class="user-name">Takaoka</div>
+                    </div>
+                    <div id="user3" class="user">
+                        <img class="user-icon" src="https://www.tokyoheadline.com/wp-content/uploads/0728adu1.jpg" alt="写真">
+                        <div id="user_name3" class="user-name">Tsunoda Takumi</div>
+                    </div> -->
+                    <button onclick="MenuSwitch()" class="user_add" id="user_add">+</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ユーザー追加画面 -->
+        <div id="user_add_screen" class="user_add_screen">
+            <div class="user_add_container">
+                    <div class="select-form">
+                        <div class="menu_title">ユーザーの追加</div>
+                        <div class="user_name">ユーザー名</div>
+                        <input id="input_user" class="user_name_input" type="text" maxlength="20">
+                        <br>
+                        <select class="user_category" id="user_category">
+                            <option value="teacher">先生</option>
+                            <option value="student">生徒</option>
+                        </select>
+                    </div> 
+                    
+                <div class="button-container">
+                    <button onclick="MenuSwitch()" class="cansel">キャンセル</button>
+                    <button onclick="userAdd()" class="select">決定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ユーザー削除確認画面 -->
+        <div id="user_delete_screen" class="user_delete_screen">
+            <div class="user_delete_container">
+                    <div class="delete_form">
+                        <div class="confirme">本当にこのユーザーを削除してもよろしいでしょうか。</div>
+                        <div class="deleteUser_container">
+                            <img id="delete_user_icon" class="user-icon" src="" alt="写真">
+                            <div id="delete_user" class="delete_user" value="">ユーザー名</div>
+                        </div>
+                    </div> 
+                    
+                <div class="button-container">
+                    <button onclick="DeleteConfirmeUser()" class="cansel">キャンセル</button>
+                    <button onclick="userDelete()" class="select" id="">決定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ユーザー削除確認画面 -->
+        <div id="chat_delete_screen" class="delete_screen">
+            <div class="delete_container">
+                <div class="delete_form">
+                    <div class="confirme">選択したメッセージを削除してもよろしいでしょうか。</div>
+                    <!-- <div class="deleteUser_container">
+                        <img id="delete_user_icon" class="user-icon" src="" alt="写真">
+                        <div id="delete_user" class="delete_user" value="">ユーザー名</div>
+                    </div> -->
+                </div> 
+
+                <div class="button-container_chat">
+                    <button onclick="DeleteConfirmeChat()" class="cansel_chat">キャンセル</button>
+                    <button onclick="chatDelete(event)" class="select_chat" id="deleteChat" value="">決定</button>
+                </div>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="chat.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+        <script src="api.js"></script>
+        <script src="chat.js"></script>
+    </body>
+</html>

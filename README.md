@@ -1,1 +1,3 @@
 # ChatApplication
+
+GitHubからBitbucketに移行
